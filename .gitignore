@@ -1,0 +1,31 @@
+# system files
+##############
+.DS_Store
+.DS_Store?
+~*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# node dependencies
+###################
+node_modules
+package-lock.json
+
+# ignore yarn
+#############
+yarn.lock
+
+# env files
+###########
+.env.*
+
+# vscode workspace settings
+###########################
+.vscode
+
+# test files
+############
+tests
