@@ -9,8 +9,12 @@ fragment FragmentCheckoutFields on Checkout {
 		edges {
 			node {
 				id
-				title
+				customAttributes {
+					key
+					value
+				}
 				quantity
+				title
 				variant {
 					image {
 						altText
@@ -35,5 +39,6 @@ fragment FragmentCheckoutFields on Checkout {
 		amount
 		currencyCode
 	}
+	webUrl
 }
 `;
