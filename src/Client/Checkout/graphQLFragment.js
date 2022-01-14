@@ -40,5 +40,6 @@ fragment FragmentCheckoutFields on Checkout {
 		currencyCode
 	}
 	webUrl
+	completedAt
 }
 `;
