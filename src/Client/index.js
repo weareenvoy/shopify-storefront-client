@@ -2,6 +2,7 @@
 import Checkout from './Checkout/index.js';
 import Request from './Request/index.js';
 import Cart from './Cart/index.js';
+import Product from './Product/index.js';
 
 class Client {
 	#settings = {
@@ -19,6 +20,7 @@ class Client {
 		this.Request	=	new Request(this);
 		this.Checkout	=	new Checkout(this);
 		this.Cart = new Cart(this);
+		this.Product = new Product(this);
 	}
 
 	static fromSettings(settings = {}) {

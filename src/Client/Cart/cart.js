@@ -25,30 +25,29 @@ class Cart {
 		return this;
 	}
 
-	async create() {
+	async create(vars) {
 		const query = this.cartCreateMutation;
-		const variables = {};
-		const res = await this.send({ query, variables })
+		const variables = { ...vars };
 		const { cartCreate } = await this.send({ query, variables });
-		const normalizedCart = normalizeCart(cartCreate);
+		const normalizedCart = normalizeCart(cartCreate.cart);
 
 		return normalizedCart;
 	}
 
-	async fetch(cartId) {
+	async fetch(cartId, vars) {
 		const query = this.getCartQuery;
-		const variables = { cartId };
+		const variables = { cartId, ...vars };
 		const { cart } = await this.send({ query, variables });
-		const normalizedCart = normalizeCart({ cart });
+		const normalizedCart = normalizeCart(cart);
 
 		return normalizedCart;
 	}
 
-	async updateDiscountCodes(cartId, discountCodes) {
+	async updateDiscountCodes(cartId, discountCodes, vars) {
 		const query = this.cartDiscountCodesUpdateMutation;
-		const variables = { cartId, discountCodes };
+		const variables = { cartId, discountCodes, ...vars };
 		const { cartDiscountCodesUpdate } = await this.send({ query, variables });
-		const normalizedCart = normalizeCart(cartDiscountCodesUpdate);
+		const normalizedCart = normalizeCart(cartDiscountCodesUpdate.cart);
 
 		return normalizedCart;
 	}

@@ -4,10 +4,11 @@ export function normalizeLineItem(lineItem) {
 	return { variant, ...rest };
 }
 
-export function normalizeCart({ cart }) {
+export function normalizeCart(cart) {
+	const { lines, ...rest } = cart;
 	return {
-		...cart,
+		...rest,
 		checkoutId: cart?.checkoutUrl?.split('/').pop() || '',
-		lineItems: cart?.lines?.edges.map(normalizeLineItem) || [],
+		lineItems: lines?.edges.map(normalizeLineItem) || [],
 	};
 }
