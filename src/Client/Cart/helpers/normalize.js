@@ -7,7 +7,7 @@ export function normalizeLineItem(lineItem) {
 export function normalizeCart({ cart }) {
 	return {
 		...cart,
-		checkoutId: cart.checkoutUrl.split('/').pop(),
-		lineItems: cart.lines?.edges.map(normalizeLineItem),
+		checkoutId: cart?.checkoutUrl?.split('/').pop() || '',
+		lineItems: cart?.lines?.edges.map(normalizeLineItem) || [],
 	};
 }
