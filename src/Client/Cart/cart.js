@@ -30,7 +30,7 @@ class Cart {
 		const variables = {};
 		const res = await this.send({ query, variables })
 		const { cartCreate } = await this.send({ query, variables });
-		const normalizedCart = normalizeCart(cart);
+		const normalizedCart = normalizeCart(cartCreate);
 
 		return normalizedCart;
 	}
