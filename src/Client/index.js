@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import Checkout from './Checkout/index.js';
 import Request from './Request/index.js';
+import Cart from './Cart/index.js';
 
 class Client {
 	#settings = {
@@ -9,7 +10,7 @@ class Client {
 		},
 		api: {
 			token: '',
-			version: '2022-01',
+			version: '2023-01',
 		},
 	};
 
@@ -17,6 +18,7 @@ class Client {
 		this.#settings	=	settings;
 		this.Request	=	new Request(this);
 		this.Checkout	=	new Checkout(this);
+		this.Cart = new Cart(this);
 	}
 
 	static fromSettings(settings = {}) {
