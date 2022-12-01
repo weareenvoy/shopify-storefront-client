@@ -39,6 +39,7 @@ export const cartDetailsFragment = /* GraphQL */ `
           cost {
             totalAmount {
               amount
+              currencyCode
             }
           }
           merchandise {
