@@ -23,6 +23,10 @@ export const cartDetailsFragment = /* GraphQL */ `
         currencyCode
       }
     }
+    discountCodes {
+      applicable
+      code
+    }
     lines(first: 250) {
       pageInfo {
         hasNextPage

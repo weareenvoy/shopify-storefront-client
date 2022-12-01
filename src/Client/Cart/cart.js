@@ -39,7 +39,7 @@ class Cart {
 		const query = this.getCartQuery;
 		const variables = { cartId };
 		const { cart } = await this.send({ query, variables });
-		const normalizedCart = normalizeCart(cart);
+		const normalizedCart = normalizeCart({ cart });
 
 		return normalizedCart;
 	}
