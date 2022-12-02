@@ -21,10 +21,16 @@ export default class {
 	}
 
 	send({query, variables}) {
+		const settings = this.Client.getSettings();
+		const vars = {
+			languageCode: settings.shop.language_code,
+			countryCode: settings.shop.country_code,
+			...variables
+		};
 		return fetch(this.endpoint, {
 			method: 'POST',
 			headers: this.headers,
-			body: JSON.stringify({query, variables}),
+			body: JSON.stringify({query, variables: vars}),
 		})
 			.then(response => { return response.json(); })
 			.then(({data, extensions, errors}) => {

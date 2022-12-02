@@ -8,6 +8,8 @@ class Client {
 	#settings = {
 		shop: {
 			myshopify_domain: '',
+			language_code: 'EN',
+			country_code: 'US',
 		},
 		api: {
 			token: '',
@@ -16,7 +18,7 @@ class Client {
 	};
 
 	constructor(settings = {}) {
-		this.#settings	=	settings;
+		this.#settings = { ...this.#settings, settings };
 		this.Request	=	new Request(this);
 		this.Checkout	=	new Checkout(this);
 		this.Cart = new Cart(this);
