@@ -63,6 +63,7 @@ const response = await client.Checkout.LineItems.clear(checkoutId);
 ```
 
 # Cart
+```
 const cartId = 'gid://shopify/Cart/e4638abd66c6f7bc2c3be0ece4f2d494'
 
 const lineItems = [
@@ -94,6 +95,7 @@ const lineItems = [
 ];
 
 const response = await client.Cart.LineItems.add(cartId, lineItems);
+```
 
 # Cart Methods
 
