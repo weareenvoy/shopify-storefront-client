@@ -18,7 +18,16 @@ class Client {
 	};
 
 	constructor(settings = {}) {
-		this.#settings = { ...this.#settings, settings };
+		this.#settings = {
+			shop: {
+				...this.#settings.shop,
+				...settings.shop,
+			},
+			api: {
+				...this.#settings.api,
+				...settings.api
+			}
+		};
 		this.Request	=	new Request(this);
 		this.Checkout	=	new Checkout(this);
 		this.Cart = new Cart(this);
