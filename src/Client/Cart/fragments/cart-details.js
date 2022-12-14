@@ -68,6 +68,7 @@ export const cartDetailsFragment = /* GraphQL */ `
                 id
                 title
                 handle
+                tags
               }
               selectedOptions {
                 name
