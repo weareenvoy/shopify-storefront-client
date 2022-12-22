@@ -1,14 +1,14 @@
 import { formatCheckoutResponse } from '../helpers';
 
 class LineItems {
-  constructor(Checkout) {
-    this.Checkout = Checkout;
-    this.send = Checkout.Client.Request.send.bind(Checkout.Client.Request);
+  constructor(checkout) {
+    this.checkout = checkout;
+    this.send = checkout.client.request.send.bind(checkout.client.request);
   }
 
   add(checkoutId, lineItems = []) {
     const query = `
-      ${this.Checkout.fragment}
+      ${this.checkout.fragment}
       mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId: ID!) {
         checkoutLineItemsAdd(lineItems: $lineItems, checkoutId: $checkoutId) {
           checkout {
@@ -35,7 +35,7 @@ class LineItems {
 
   remove(checkoutId, lineItemIds = []) {
     const query = `
-      ${this.Checkout.fragment}
+      ${this.checkout.fragment}
       mutation checkoutLineItemsRemove($checkoutId: ID!, $lineItemIds: [ID!]!) {
         checkoutLineItemsRemove(checkoutId: $checkoutId, lineItemIds: $lineItemIds) {
           checkout {
@@ -62,7 +62,7 @@ class LineItems {
 
   replace(checkoutId, lineItems = []) {
     const query = `
-      ${this.Checkout.fragment}
+      ${this.checkout.fragment}
       mutation checkoutLineItemsReplace($lineItems: [CheckoutLineItemInput!]!, $checkoutId: ID!) {
         checkoutLineItemsReplace(lineItems: $lineItems, checkoutId: $checkoutId) {
           checkout {
@@ -89,7 +89,7 @@ class LineItems {
 
   update(checkoutId, lineItems = []) {
     const query = `
-      ${this.Checkout.fragment}
+      ${this.checkout.fragment}
       mutation checkoutLineItemsUpdate($checkoutId: ID!, $lineItems: [CheckoutLineItemUpdateInput!]!) {
         checkoutLineItemsUpdate(checkoutId: $checkoutId, lineItems: $lineItems) {
           checkout {

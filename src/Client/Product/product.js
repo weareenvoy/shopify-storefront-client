@@ -3,9 +3,9 @@ import { createGetProductQuery } from './queries';
 import { normalizeProduct } from './helpers';
 
 class Product {
-  constructor(Client) {
-    this.Client = Client;
-    this.send = this.Client.Request.send.bind(this.Client.Request);
+  constructor(client) {
+    this.client = client;
+    this.send = this.client.request.send.bind(this.client.request);
     this.useFragment(productFragment);
   }
 

@@ -7,9 +7,9 @@ import {
 import { unwrapCartPayload } from './helpers';
 
 class LineItems {
-  constructor(Client) {
-    this.Client = Client;
-    this.send = this.Client.Request.send.bind(this.Client.Request);
+  constructor(client) {
+    this.client = client;
+    this.send = this.client.request.send.bind(this.client.request);
     this.useFragment(cartFragment);
   }
 

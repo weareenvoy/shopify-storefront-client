@@ -3,10 +3,14 @@ import LineItems from './LineItems/index';
 import FragmentCheckoutFields from './graphQLFragment';
 
 class Checkout {
-  constructor(Client) {
-    this.Client = Client;
-    this.send = this.Client.Request.send.bind(this.Client.Request);
-    this.LineItems = new LineItems(this);
+  constructor(client) {
+    this.client = client;
+    this.send = this.client.request.send.bind(this.client.request);
+    this.lineItems = new LineItems(this);
+
+    // TODO: Deprecate: pascal case should be reserved for constructor functions that must be used with the 'new' prefix
+    this.LineItems = this.lineItems;
+
     this.fragment = FragmentCheckoutFields;
   }
 

@@ -8,10 +8,14 @@ import {
 import { unwrapCartPayload } from './helpers';
 
 class Cart {
-  constructor(Client) {
-    this.Client = Client;
-    this.LineItems = new LineItems(Client);
-    this.send = this.Client.Request.send.bind(this.Client.Request);
+  constructor(client) {
+    this.client = client;
+    this.lineItems = new LineItems(client);
+
+    // TODO: Deprecate: pascal case should be reserved for constructor functions that must be used with the 'new' prefix
+    this.LineItems = this.lineItems;
+
+    this.send = this.client.request.send.bind(this.client.request);
     this.useFragment(cartFragment);
   }
 

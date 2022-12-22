@@ -1,6 +1,6 @@
 export default class {
-  constructor(Client) {
-    this.Client = Client;
+  constructor(client) {
+    this.client = client;
     this.headers = this.getRequestHeaders();
     this.endpoint = this.getRequestEndpoint();
   }
@@ -9,17 +9,17 @@ export default class {
     return {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': this.Client.getSettings().api.token,
+      'X-Shopify-Storefront-Access-Token': this.client.getSettings().api.token,
     };
   }
 
   getRequestEndpoint() {
-    const settings = this.Client.getSettings();
+    const settings = this.client.getSettings();
     return `https://${settings.shop.myshopify_domain}/api/${settings.api.version}/graphql.json`;
   }
 
   send({ query, variables }) {
-    const settings = this.Client.getSettings();
+    const settings = this.client.getSettings();
     const vars = {
       languageCode: settings.shop.language_code,
       countryCode: settings.shop.country_code,
