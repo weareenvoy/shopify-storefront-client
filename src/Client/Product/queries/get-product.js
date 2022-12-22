@@ -12,7 +12,7 @@ function createGetProductQuery(fragment = productFragment) {
       }
     }
 
-    ${productFragment}
+    ${fragment}
   `;
 
   return query;

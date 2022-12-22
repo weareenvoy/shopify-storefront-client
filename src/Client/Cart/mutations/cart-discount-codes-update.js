@@ -1,7 +1,7 @@
 import { cartFragment } from '../fragments';
 
 function createCartDiscountCodesUpdate(fragment = cartFragment) {
-	const query = `
+  const query = `
     mutation cartDiscountCodesUpdate(
       $cartId: ID!
       $discountCodes: [String!]
@@ -23,7 +23,7 @@ function createCartDiscountCodesUpdate(fragment = cartFragment) {
     ${fragment}
   `;
 
-	return query;
+  return query;
 }
 
 export default createCartDiscountCodesUpdate;
