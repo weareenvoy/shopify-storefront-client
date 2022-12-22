@@ -1,5 +1,5 @@
 import LineItems from './line-items';
-import { cartDetailsFragment } from './fragments';
+import { cartFragment } from './fragments';
 import { createGetCartQuery } from './queries';
 import {
 	createCartCreateMutation,
@@ -12,16 +12,15 @@ class Cart {
 		this.Client = Client;
 		this.LineItems = new LineItems(Client);
 		this.send = this.Client.Request.send.bind(this.Client.Request);
-		this.useFragment(cartDetailsFragment);
+		this.useFragment(cartFragment);
 	}
 
-	useFragment(fragment = cartDetailsFragment) {
+	useFragment(fragment = cartFragment) {
 		this.getCartQuery = createGetCartQuery(fragment);
 		this.cartCreateMutation = createCartCreateMutation(fragment);
 		this.cartDiscountCodesUpdateMutation =
 			createCartDiscountCodesUpdateMutation(fragment);
 		this.LineItems.useFragment(fragment);
-
 		return this;
 	}
 
