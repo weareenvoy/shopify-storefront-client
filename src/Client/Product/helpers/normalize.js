@@ -12,6 +12,6 @@ export function unwrapNode(model) {
   return node;
 }
 
-export function normalizeProduct(product) {
+export function normalizeProduct(product = {}) {
   return unwrapNode(product);
 }

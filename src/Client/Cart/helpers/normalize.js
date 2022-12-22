@@ -4,7 +4,7 @@ export function normalizeLineItem(lineItem) {
 	return { variant, ...rest };
 }
 
-export function normalizeCart(cart) {
+export function normalizeCart(cart = {}) {
 	const { lines, ...rest } = cart;
 	return {
 		...rest,
