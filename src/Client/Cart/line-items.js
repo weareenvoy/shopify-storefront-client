@@ -24,7 +24,12 @@ class LineItems {
 	async add(cartId, lineItems = [], vars) {
 		const query = this.lineItemsAddMutation;
 		const variables = { cartId, lineItems, ...vars };
-		const { cartLinesAdd } = await this.send({ query, variables });
+		const { cartLinesAdd, userErrors } = await this.send({ query, variables });
+
+		if (userErrors && userErrors.length) {
+			throw new Error(userErrors[0].message)
+		}
+
 		const normalizedCart = normalizeCart(cartLinesAdd.cart);
 
 		return normalizedCart;
@@ -33,7 +38,12 @@ class LineItems {
 	async remove(cartId, lineItemIds = [], vars) {
 		const query = this.lineItemsRemoveMutation;
 		const variables = { cartId, lineItemIds, ...vars };
-		const { cartLinesRemove } = await this.send({ query, variables });
+		const { cartLinesRemove, userErrors } = await this.send({ query, variables });
+
+		if (userErrors && userErrors.length) {
+			throw new Error(userErrors[0].message)
+		}
+
 		const normalizedCart = normalizeCart(cartLinesRemove.cart);
 
 		return normalizedCart;
@@ -42,7 +52,12 @@ class LineItems {
 	async update(cartId, lineItems = [], vars) {
 		const query = this.lineItemsUpdateMutation;
 		const variables = { cartId, lineItems, ...vars };
-		const { cartLinesUpdate } = await this.send({ query, variables });
+		const { cartLinesUpdate, userErrors } = await this.send({ query, variables });
+
+		if (userErrors && userErrors.length) {
+			throw new Error(userErrors[0].message)
+		}
+
 		const normalizedCart = normalizeCart(cartLinesUpdate.cart);
 
 		return normalizedCart;
