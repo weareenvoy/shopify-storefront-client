@@ -27,10 +27,17 @@ class Client {
         ...settings.api,
       },
     };
-    this.Request = new Request(this);
-    this.Checkout = new Checkout(this);
-    this.Cart = new Cart(this);
-    this.Product = new Product(this);
+
+    this.request = new Request(this);
+    this.checkout = new Checkout(this);
+    this.cart = new Cart(this);
+    this.product = new Product(this);
+
+    // TODO: Deprecate these: pascal case should be reserved for constructor functions that must be used with the 'new' prefix
+    this.Request = this.request;
+    this.Checkout = this.checkout;
+    this.Cart = this.cart;
+    this.Product = this.product;
   }
 
   static fromSettings(settings = {}) {

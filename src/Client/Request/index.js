@@ -31,7 +31,7 @@ export default class {
       body: JSON.stringify({ query, variables: vars }),
     })
       .then((response) => response.json())
-      .then(({ data, extensions, errors }) => {
+      .then(({ data, errors }) => {
         if (errors) {
           console.error(errors);
           throw new Error(
