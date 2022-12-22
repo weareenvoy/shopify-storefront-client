@@ -18,14 +18,13 @@ class Product {
 	async fetch(productId, vars) {
 		const query = this.getProductQuery;
 		const variables = { productId, ...vars };
-		const { product } = await this.send({ query, variables });
-		const normalizedProduct = normalizeProduct(product);
-		const { userErrors } = product;
-
+		const { product, userErrors } = await this.send({ query, variables });
+		
 		if (userErrors && userErrors.length) {
 			throw new Error(userErrors[0].message);
 		}
 
+		const normalizedProduct = normalizeProduct(product);
 		return normalizedProduct;
 	}
 }

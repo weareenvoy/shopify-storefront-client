@@ -43,8 +43,7 @@ class Cart {
 	async fetch(cartId, vars) {
 		const query = this.getCartQuery;
 		const variables = { cartId, ...vars };
-		const { cart } = await this.send({ query, variables });
-		const { userErrors } = cart;
+		const { cart, userErrors } = await this.send({ query, variables });
 
 		if (userErrors && userErrors.length) {
 			throw new Error(userErrors[0].message);
