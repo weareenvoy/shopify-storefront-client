@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch';
-
 export default class {
   constructor(Client) {
     this.Client = Client;

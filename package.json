@@ -13,9 +13,6 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "isomorphic-fetch": "^3.0.0"
-  },
   "devDependencies": {
     "eslint": "^8.30.0",
     "eslint-config-airbnb-base": "^15.0.0",
