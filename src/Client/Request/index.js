@@ -36,7 +36,9 @@ export default class {
       .then(({ data, extensions, errors }) => {
         if (errors) {
           console.error(errors);
-          throw new Error('🚨 Shopify GraphQL response reported an error. Check the console.');
+          throw new Error(
+            '🚨 Shopify GraphQL response reported an error. Check the console.'
+          );
         }
         return data;
       });

@@ -1,8 +1,6 @@
 export class CommerceError extends Error {
   constructor({ message, code, errors }) {
-    const error = message
-      ? { message, ...(code ? { code } : {}) }
-      : errors[0];
+    const error = message ? { message, ...(code ? { code } : {}) } : errors[0];
 
     super(error.message);
     this.errors = message ? [error] : errors;

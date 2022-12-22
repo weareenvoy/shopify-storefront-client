@@ -135,10 +135,14 @@ class LineItems {
     return this.send({
       query,
       variables,
-    }).then((response) => {
-      const lineItemIds = response.node.lineItems.edges.map((edge) => edge.node.id);
-      return lineItemIds;
-    }).then((lineItemIds) => this.remove(checkoutId, lineItemIds));
+    })
+      .then((response) => {
+        const lineItemIds = response.node.lineItems.edges.map(
+          (edge) => edge.node.id
+        );
+        return lineItemIds;
+      })
+      .then((lineItemIds) => this.remove(checkoutId, lineItemIds));
   }
 }
 

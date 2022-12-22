@@ -11,7 +11,4 @@ function formatCheckoutResponse(checkout) {
   return checkout;
 }
 
-export {
-  formatCheckoutResponse,
-  unwrapObjectFromNode,
-};
+export { formatCheckoutResponse, unwrapObjectFromNode };

@@ -1,10 +1,6 @@
-/* eslint-disable import/extensions */
-import {
-  formatCheckoutResponse,
-  unwrapObjectFromNode,
-} from './helpers.js';
-import LineItems from './LineItems/index.js';
-import FragmentCheckoutFields from './graphQLFragment.js';
+import { formatCheckoutResponse, unwrapObjectFromNode } from './helpers';
+import LineItems from './LineItems/index';
+import FragmentCheckoutFields from './graphQLFragment';
 
 class Checkout {
   constructor(Client) {

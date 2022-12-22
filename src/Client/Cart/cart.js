@@ -18,7 +18,8 @@ class Cart {
   useFragment(fragment = cartFragment) {
     this.getCartQuery = createGetCartQuery(fragment);
     this.cartCreateMutation = createCartCreateMutation(fragment);
-    this.cartDiscountCodesUpdateMutation = createCartDiscountCodesUpdateMutation(fragment);
+    this.cartDiscountCodesUpdateMutation =
+      createCartDiscountCodesUpdateMutation(fragment);
     this.LineItems.useFragment(fragment);
     return this;
   }
