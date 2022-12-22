@@ -51,7 +51,7 @@ const lineItems = [
   },
 ];
 
-const response = await client.Checkout.LineItems.add(checkoutId, lineItems);
+const response = await client.checkout.lineItems.add(checkoutId, lineItems);
 ```
 
 ## Checkout Methods
@@ -60,13 +60,13 @@ const response = await client.Checkout.LineItems.add(checkoutId, lineItems);
 > All `Client.Checkout.*` methods return a Shopify `Checkout` object.
 
 ```javascript
-const response = await client.Checkout.create(;
-const response = await client.Checkout.fetch(checkout_id);
-const response = await client.Checkout.LineItems.add(checkoutId, lineItems);
-const response = await client.Checkout.LineItems.remove(checkoutId, lineItemIds);
-const response = await client.Checkout.LineItems.replace(checkoutId, lineItems);
-const response = await client.Checkout.LineItems.update(checkoutId, lineItems);
-const response = await client.Checkout.LineItems.clear(checkoutId);
+const response = await client.checkout.create();
+const response = await client.checkout.fetch(checkout_id);
+const response = await client.checkout.lineItems.add(checkoutId, lineItems);
+const response = await client.checkout.lineItems.remove(checkoutId, lineItemIds);
+const response = await client.checkout.lineItems.replace(checkoutId, lineItems);
+const response = await client.checkout.lineItems.update(checkoutId, lineItems);
+const response = await client.checkout.lineItems.clear(checkoutId);
 ```
 
 ## Cart
@@ -102,17 +102,17 @@ const lineItems = [
   },
 ];
 
-const response = await client.Cart.LineItems.add(cartId, lineItems);
+const response = await client.cart.lineItems.add(cartId, lineItems);
 ```
 
 ## Cart Methods
 
 ```javascript
-const response = await client.Cart.create();
-const response = await client.Cart.fetch(cartId);
-const response = await client.Cart.LineItems.add(cartId, lineItems);
-const response = await client.Cart.LineItems.remove(cartId, lineItemIds);
-const response = await client.Cart.LineItems.update(cartId, lineItems);
+const response = await client.cart.create();
+const response = await client.cart.fetch(cartId);
+const response = await client.cart.lineItems.add(cartId, lineItems);
+const response = await client.cart.lineItems.remove(cartId, lineItemIds);
+const response = await client.cart.lineItems.update(cartId, lineItems);
 ```
 
 ## Override the fields queried for
@@ -120,7 +120,7 @@ const response = await client.Cart.LineItems.update(cartId, lineItems);
 ### Example 1
 
 ```javascript
-client.Checkout.useFragment(`
+client.checkout.useFragment(`
 fragment FragmentCheckoutFields on Checkout {
   id
   totalPriceV2 {
@@ -134,7 +134,7 @@ fragment FragmentCheckoutFields on Checkout {
 ### Example 2
 
 ```javascript
-client.Checkout.useFragment(`
+client.checkout.useFragment(`
 fragment FragmentCheckoutFields on Checkout {
   id
   customAttributes {
