@@ -1,6 +1,6 @@
-import { cartDetailsFragment } from '../fragments';
+import { cartFragment } from '../fragments';
 
-function createGetCartQuery(fragment = cartDetailsFragment) {
+function createGetCartQuery(fragment = cartFragment) {
   const query = `
     query getCart(
       $cartId: ID!
@@ -8,7 +8,7 @@ function createGetCartQuery(fragment = cartDetailsFragment) {
       $language: LanguageCode = EN
     ) @inContext(country: $country, language: $language) {
       cart(id: $cartId) {
-        ...cartDetails
+        ...CartFragment
       }
     }
     ${fragment}

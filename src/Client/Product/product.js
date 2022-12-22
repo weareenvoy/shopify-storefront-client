@@ -1,4 +1,4 @@
-import { sellingPlanGroupConnection } from './fragments';
+import { productFragment } from './fragments';
 import { createGetProductQuery } from './queries';
 import { normalizeProduct } from './helpers';
 
@@ -6,26 +6,19 @@ class Product {
 	constructor(Client) {
 		this.Client = Client;
 		this.send = this.Client.Request.send.bind(this.Client.Request);
-		this.useFragment(sellingPlanGroupConnection);
+		this.useFragment(productFragment);
 	}
 
-	useFragment(fragment = sellingPlanGroupConnection) {
+	useFragment(fragment = productFragment) {
 		this.getProductQuery = createGetProductQuery(fragment);
-
 		return this;
 	}
 
 	async fetch(productId, vars) {
 		const query = this.getProductQuery;
 		const variables = { productId, ...vars };
-		const { product, userErrors } = await this.send({ query, variables });
-		
-		if (userErrors && userErrors.length) {
-			throw new Error(userErrors[0].message);
-		}
-
-		const normalizedProduct = normalizeProduct(product);
-		return normalizedProduct;
+		const { product } = await this.send({ query, variables });
+		return normalizeProduct(product);
 	}
 }
 

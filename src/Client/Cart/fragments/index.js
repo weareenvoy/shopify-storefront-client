@@ -1,1 +1,1 @@
-export { default as cartDetailsFragment } from './cart-details';
+export { default as cartFragment } from './cart';

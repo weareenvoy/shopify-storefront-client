@@ -1,6 +1,6 @@
-import { cartDetailsFragment } from '../fragments';
+import { cartFragment } from '../fragments';
 
-function createCartCreateMutation(fragment = cartDetailsFragment) {
+function createCartCreateMutation(fragment = cartFragment) {
   const query = `
     mutation cartCreate(
       $input: CartInput = {}
@@ -14,7 +14,7 @@ function createCartCreateMutation(fragment = cartDetailsFragment) {
           message
         }
         cart {
-          ...cartDetails
+          ...CartFragment
         }
       }
     }

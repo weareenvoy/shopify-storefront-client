@@ -1,6 +1,6 @@
-import { cartDetailsFragment } from '../fragments';
+import { cartFragment } from '../fragments';
 
-function createLineItemRemoveMutation(fragment = cartDetailsFragment) {
+function createLineItemRemoveMutation(fragment = cartFragment) {
   const query = `
     mutation cartLinesRemove(
       $cartId: ID!
@@ -15,7 +15,7 @@ function createLineItemRemoveMutation(fragment = cartDetailsFragment) {
           message
         }
         cart {
-          ...cartDetails
+          ...CartFragment
         }
       }
     }

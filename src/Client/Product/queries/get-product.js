@@ -1,7 +1,7 @@
 import { productFragment } from '../fragments';
 
 function createGetProductQuery(fragment = productFragment) {
-  const query = /* GraphQL */ `
+  const query = `
     query getProduct(
       $productId: ID
       $country: CountryCode = US

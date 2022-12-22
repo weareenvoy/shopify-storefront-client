@@ -1,5 +1,5 @@
 const fragment = `
-	fragment sellingPlanGroupConnection on SellingPlanGroupConnection {
+	fragment SellingPlanGroupConnectionFragment on SellingPlanGroupConnection {
 		pageInfo {
 			hasNextPage
 			hasPreviousPage

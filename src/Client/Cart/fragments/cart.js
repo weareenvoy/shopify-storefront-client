@@ -1,5 +1,5 @@
-export const cartDetailsFragment = /* GraphQL */ `
-  fragment cartDetails on Cart {
+export const cartFragment = /* GraphQL */ `
+  fragment CartFragment on Cart {
     id
     createdAt
     updatedAt
@@ -97,4 +97,4 @@ export const cartDetailsFragment = /* GraphQL */ `
   }
 `;
 
-export default cartDetailsFragment;
+export default cartFragment;

@@ -1,5 +1,5 @@
 import variantFragment from './variant';
-import sellingPlanGroupConnection from './selling-plan-group';
+import sellingPlanGroupConnectionFragment from './selling-plan-group';
 
 const fragment = `
 	fragment ProductFragment on Product {
@@ -48,12 +48,12 @@ const fragment = `
 			}
 		}
 		sellingPlanGroups(first: 250) {
-			...sellingPlanGroupConnection
+			...SellingPlanGroupConnectionFragment
 		}
 	}
 
 	${variantFragment}
-	${sellingPlanGroupConnection}
-`
+	${sellingPlanGroupConnectionFragment}
+`;
 
-export default fragment
+export default fragment;

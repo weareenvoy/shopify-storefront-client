@@ -5,7 +5,7 @@ import {
 	createCartCreateMutation,
 	createCartDiscountCodesUpdateMutation,
 } from './mutations';
-import { normalizeCart } from './helpers';
+import { unwrapCartPayload } from './helpers';
 
 class Cart {
 	constructor(Client) {
@@ -29,44 +29,21 @@ class Cart {
 		const query = this.cartCreateMutation;
 		const variables = { ...vars };
 		const { cartCreate } = await this.send({ query, variables });
-		const { userErrors } = cartCreate;
-
-		if (userErrors && userErrors.length) {
-			throw new Error(userErrors[0].message);
-		}
-
-		const normalizedCart = normalizeCart(cartCreate.cart);
-
-		return normalizedCart;
+		return unwrapCartPayload(cartCreate);
 	}
 
 	async fetch(cartId, vars) {
 		const query = this.getCartQuery;
 		const variables = { cartId, ...vars };
-		const { cart, userErrors } = await this.send({ query, variables });
-
-		if (userErrors && userErrors.length) {
-			throw new Error(userErrors[0].message);
-		}
-
-		const normalizedCart = normalizeCart(cart);
-
-		return normalizedCart;
+		const { cart } = await this.send({ query, variables });
+		return unwrapCartPayload({ cart });
 	}
 
 	async updateDiscountCodes(cartId, discountCodes, vars) {
 		const query = this.cartDiscountCodesUpdateMutation;
 		const variables = { cartId, discountCodes, ...vars };
 		const { cartDiscountCodesUpdate } = await this.send({ query, variables });
-		const { userErrors } = cartDiscountCodesUpdate;
-
-		if (userErrors && userErrors.length) {
-			throw new Error(userErrors[0].message);
-		}
-
-		const normalizedCart = normalizeCart(cartDiscountCodesUpdate.cart);
-
-		return normalizedCart;
+		return unwrapCartPayload(cartDiscountCodesUpdate);
 	}
 }
 
