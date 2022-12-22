@@ -7,7 +7,7 @@ export function unwrapCartPayload(cartPayload = {}) {
   throwUserErrors(userErrors);
 
   if (!cart) {
-    throw new CommerceError({ message: 'Missing chart object from response' });
+    throw new CommerceError({ message: 'Missing cart object from response' });
   }
 
   return normalizeCart(cart);
