@@ -28,7 +28,12 @@ class Cart {
 	async create(vars) {
 		const query = this.cartCreateMutation;
 		const variables = { ...vars };
-		const { cartCreate } = await this.send({ query, variables });
+		const { cartCreate, userErrors } = await this.send({ query, variables });
+
+		if (userErrors && userErrors.length) {
+			throw new Error(userErrors[0].message)
+		}
+
 		const normalizedCart = normalizeCart(cartCreate.cart);
 
 		return normalizedCart;
@@ -37,7 +42,12 @@ class Cart {
 	async fetch(cartId, vars) {
 		const query = this.getCartQuery;
 		const variables = { cartId, ...vars };
-		const { cart } = await this.send({ query, variables });
+		const { cart, userErrors } = await this.send({ query, variables });
+
+		if (userErrors && userErrors.length) {
+			throw new Error(userErrors[0].message)
+		}
+
 		const normalizedCart = normalizeCart(cart);
 
 		return normalizedCart;
@@ -46,7 +56,12 @@ class Cart {
 	async updateDiscountCodes(cartId, discountCodes, vars) {
 		const query = this.cartDiscountCodesUpdateMutation;
 		const variables = { cartId, discountCodes, ...vars };
-		const { cartDiscountCodesUpdate } = await this.send({ query, variables });
+		const { cartDiscountCodesUpdate, userErrors } = await this.send({ query, variables });
+
+		if (userErrors && userErrors.length) {
+			throw new Error(userErrors[0].message)
+		}
+
 		const normalizedCart = normalizeCart(cartDiscountCodesUpdate.cart);
 
 		return normalizedCart;
