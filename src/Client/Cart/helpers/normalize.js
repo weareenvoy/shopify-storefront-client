@@ -1,7 +1,7 @@
 export function normalizeLineItem(lineItem) {
 	const { node } = lineItem;
-	const { merchandise: variant, ...rest } = node;
-	return { variant, merchandise: variant, ...rest };
+	const { merchandise, ...rest } = node;
+	return { merchandise, variant: merchandise, ...rest };
 }
 
 export function normalizeCart(cart) {
