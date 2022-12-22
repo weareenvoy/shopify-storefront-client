@@ -1,4 +1,4 @@
-import { cartDetailsFragment } from './fragments';
+import { cartFragment } from './fragments';
 import {
 	createCartLineItemAddMutation,
 	createCartLineItemRemoveMutation,
@@ -10,10 +10,10 @@ class LineItems {
 	constructor(Client) {
 		this.Client = Client;
 		this.send = this.Client.Request.send.bind(this.Client.Request);
-		this.useFragment(cartDetailsFragment);
+		this.useFragment(cartFragment);
 	}
 
-	useFragment(fragment = cartDetailsFragment) {
+	useFragment(fragment = cartFragment) {
 		this.lineItemsAddMutation = createCartLineItemAddMutation(fragment);
 		this.lineItemsRemoveMutation = createCartLineItemRemoveMutation(fragment);
 		this.lineItemsUpdateMutation = createCartLineItemUpdateMutation(fragment);
