@@ -1,4 +1,7 @@
 export function unwrapNode(model) {
+  //  Guard
+  if( !model ) return model;
+
   const keys = Object.keys(model);
   const unwrappedNode = keys.reduce((acc, cur) => {
     const value = model[cur];

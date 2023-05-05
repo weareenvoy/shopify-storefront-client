@@ -12,7 +12,7 @@ class Client {
     },
     api: {
       token: '',
-      version: '2023-01',
+      version: '2023-07',
     },
   };
 
