@@ -53,7 +53,7 @@ class Cart {
   }
 
   async updateAttributes(cartId, attributes, vars = {}) {
-    const query = cartAttributesUpdateMutation;
+    const query = this.cartAttributesUpdateMutation;
     const variables = { cartId, attributes, ...vars };
     const { cartAttributesUpdate } = await this.send({ query, variables });
     return unwrapCartPayload(cartAttributesUpdate);
