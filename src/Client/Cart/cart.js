@@ -4,6 +4,7 @@ import { createGetCartQuery } from './queries';
 import {
   createCartCreateMutation,
   createCartDiscountCodesUpdateMutation,
+  createCartAttributesUpdateMutation,
 } from './mutations';
 import { unwrapCartPayload } from './helpers';
 
@@ -24,6 +25,8 @@ class Cart {
     this.cartCreateMutation = createCartCreateMutation(fragment);
     this.cartDiscountCodesUpdateMutation =
       createCartDiscountCodesUpdateMutation(fragment);
+    this.cartAttributesUpdateMutation =
+      createCartAttributesUpdateMutation(fragment);
     this.LineItems.useFragment(fragment);
     return this;
   }
@@ -47,6 +50,13 @@ class Cart {
     const variables = { cartId, discountCodes, ...vars };
     const { cartDiscountCodesUpdate } = await this.send({ query, variables });
     return unwrapCartPayload(cartDiscountCodesUpdate);
+  }
+
+  async updateAttributes(cartId, attributes, vars = {}) {
+    const query = cartAttributesUpdateMutation;
+    const variables = { cartId, attributes, ...vars };
+    const { cartAttributesUpdate } = await this.send({ query, variables });
+    return unwrapCartPayload(cartAttributesUpdate);
   }
 }
 
