@@ -46,6 +46,21 @@ export const cartFragment = /* GraphQL */ `
               currencyCode
             }
           }
+          discountAllocations {
+            discountedAmount {
+              amount
+              currencyCode
+            }
+            ... on CartAutomaticDiscountAllocation {
+              title
+            }
+            ... on CartCodeDiscountAllocation {
+              code
+            }
+            ... on CartCustomDiscountAllocation {
+              title
+            }
+          }
           merchandise {
             ... on ProductVariant {
               id
